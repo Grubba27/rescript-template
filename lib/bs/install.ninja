@@ -1,0 +1,14 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o Info.cmi : cp ../bs/src/imports/ui/Info.cmi
+o Info.cmj : cp ../bs/src/imports/ui/Info.cmj
+o Info.cmt : cp ../bs/src/imports/ui/Info.cmt
+o Info.res : cp ../../src/imports/ui/Info.res
+o Hello.cmi : cp ../bs/src/imports/ui/Hello.cmi
+o Hello.cmj : cp ../bs/src/imports/ui/Hello.cmj
+o Hello.cmt : cp ../bs/src/imports/ui/Hello.cmt
+o Hello.res : cp ../../src/imports/ui/Hello.res
+build install.stamp : touch Info.cmi Info.cmj Hello.cmi Hello.cmj 

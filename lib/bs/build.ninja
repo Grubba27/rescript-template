@@ -1,0 +1,17 @@
+rescript = 1
+g_finger := /Users/grubba/Desktop/personal/rescript-template/node_modules/@rescript/react/lib/ocaml/install.stamp
+rule astj
+  command = /Users/grubba/Desktop/personal/rescript-template/node_modules/rescript/darwin/bsc.exe  -bs-v 10.0.1 -bs-jsx 3  -absname -bs-ast -o $out $i
+o src/imports/ui/Info.ast : astj ../../src/imports/ui/Info.res
+rule deps
+  command = /Users/grubba/Desktop/personal/rescript-template/node_modules/rescript/darwin/bsb_helper.exe -hash cce2d326dbf882e3cb5378940fdf86cb $in
+  restat = 1
+o src/imports/ui/Info.d : deps src/imports/ui/Info.ast
+rule mij
+  command = /Users/grubba/Desktop/personal/rescript-template/node_modules/rescript/darwin/bsc.exe -I src/tests -I src/server -I src/imports/ui -I src/imports/api -I src/imports -I src/client -I src -I /Users/grubba/Desktop/personal/rescript-template/node_modules/@rescript/react/lib/ocaml   -bs-package-name your-project-name -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/imports/ui/Info.cmj src/imports/ui/Info.cmi ../../src/imports/ui/Info.bs.js : mij src/imports/ui/Info.ast
+o src/imports/ui/Hello.ast : astj ../../src/imports/ui/Hello.res
+o src/imports/ui/Hello.d : deps src/imports/ui/Hello.ast
+o src/imports/ui/Hello.cmj src/imports/ui/Hello.cmi ../../src/imports/ui/Hello.bs.js : mij src/imports/ui/Hello.ast

@@ -1,0 +1,4 @@
+#Start(1666568831622)
+File "/Users/grubba/Desktop/personal/rescript-template/src/imports/ui/Info.res", line 27, characters 9-10:
+Warning 26: unused variable l.
+#Done(1666568831711)
